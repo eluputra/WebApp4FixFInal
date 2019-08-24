@@ -1,0 +1,63 @@
+﻿@model IEnumerable<LuckyPaw.Models.UserModel>
+
+@{
+    ViewData["Title"] = "Manage Accounts";
+}
+
+<h1>Current Accounts</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                User Name
+            </th>
+            <th>
+                Role
+            </th>
+            <th>
+                Update Role Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            @foreach (var itemUser in item.userList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => itemUser.UserName)
+                    </td>
+                    @foreach (var itemUserRole in item.userRoleList)
+                    {
+                        <!--If code from https://www.w3schools.com/asp/razor_cs_logic.asp-->
+                        @if (itemUser.Id == itemUserRole.UserId)
+                        {
+                           @foreach (var itemRole in item.roleList)
+                           {
+                              @if (itemUserRole.RoleId == itemRole.Id)
+                              {
+                                 <td>
+                                     @Html.DisplayFor(modelItem => itemRole.Name)
+                                 </td>
+                              }
+                           }
+                        }
+                    }
+                   <td>
+                      <!--Select code from https://www.learnrazorpages.com/razor-pages/forms/select-lists var number = Request.Form["number"];-->
+                      <form asp-action="UpdateAccount">
+                        <input type="hidden" name = "userId" asp-for="@itemUser.Id" />
+                        <select name="selectRole">
+                            <option value="Admin">Admin</option>
+                            <option value="Manager">Manager</option>
+                            <option value="User">User</option>
+                        </select> &nbsp; &nbsp; &nbsp;
+                        <input type="submit" value="Update" class="btn btn-info" />
+                      </form>
+                   </td>
+                </tr>
+            }
+         }
+    </tbody>
+</table>

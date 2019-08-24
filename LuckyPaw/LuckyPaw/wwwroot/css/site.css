@@ -1,0 +1,112 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+.divContactUs {
+    border: 1px solid black;
+    position: relative;
+    left: 0% !Important;
+}
+
+.btnLogin {
+    color: white !Important;
+    position: relative;
+    left: 410px;
+}
+
+.btnRegister {
+    color: white !Important;
+    position: relative;
+    left: 400px;
+}
+
+.btnShoppingCart {
+    color: white !Important;
+    position: relative;
+    left: 390px;
+}
+
+.btnCartItemsView, .btnManageAccounts {
+    color: white !Important;
+}
+
+.nav-link.text-dark.btn.btn-info.btnLogin:hover, .nav-link.text-dark.btn.btn-info.btnRegister:hover,
+.nav-link.text-dark.btn.btn-info.btnShoppingCart:hover, .nav-link.text-dark.btn.btn-info.btnCartItemsView:hover,
+.nav-link.text-dark.btn.btn-info.btnManageAccounts:hover {
+    color: greenyellow !Important
+}
+
+.displayNone {
+    display:none
+}
+
+.btnManage {
+    position: relative;
+    left: -70px;
+    width: 140%;
+}
+
+.btnLogOut {
+    position: relative;
+    left: 0px
+}
+
+nav {
+    position: relative;
+    left: -180px
+}

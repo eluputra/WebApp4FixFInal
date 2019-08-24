@@ -1,0 +1,87 @@
+﻿@model IEnumerable<LuckyPaw.Models.TrainingDogModel>
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<h1>Index</h1>
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Admin"))
+    {
+     <p>
+        <a asp-action="Create">Create New</a>
+     </p>
+    }
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DogName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrainerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GraduationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrainingType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DogName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrainerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GraduationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrainingType)
+                </td>
+                <td>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @if (User.IsInRole("User"))
+                        {
+
+                            <a asp-action="Details" asp-route-id="@item.TrainingId">Details</a>
+                        }
+                        else if (User.IsInRole("Manager"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.TrainingId">Edit |</a>
+                            <a asp-action="Details" asp-route-id="@item.TrainingId">Details</a>
+                        }
+                        else if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.TrainingId">Edit |</a> 
+                            <a asp-action="Details" asp-route-id="@item.TrainingId">Details |</a> 
+                            <a asp-action="Delete" asp-route-id="@item.TrainingId">Delete</a>
+                        }
+                    }
+                    else
+                    {
+                          <a asp-action="Details" asp-route-id="@item.TrainingId">Details</a>
+                    }
+
+                   
+                    <!--
+    <a asp-action="Edit" asp-route-id="@item.TrainingId">Edit</a> |
+    <a asp-action="Details" asp-route-id="@item.TrainingId">Details</a> |
+    <a asp-action="Delete" asp-route-id="@item.TrainingId">Delete</a>-->
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

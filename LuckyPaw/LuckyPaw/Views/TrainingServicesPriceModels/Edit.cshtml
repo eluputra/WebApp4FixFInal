@@ -1,0 +1,44 @@
+﻿@model LuckyPaw.Models.TrainingServicesPriceModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>TrainingServicesPriceModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TrainingServicesPriceID" />
+            <div class="form-group">
+                <label asp-for="TrainingName" class="control-label"></label>
+                <input asp-for="TrainingName" class="form-control" />
+                <span asp-validation-for="TrainingName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PriceTraining" class="control-label"></label>
+                <input asp-for="PriceTraining" class="form-control" />
+                <span asp-validation-for="PriceTraining" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrainingDesc" class="control-label"></label>
+                <input asp-for="TrainingDesc" class="form-control" />
+                <span asp-validation-for="TrainingDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,82 @@
+﻿@model IEnumerable<LuckyPaw.Models.TrainersModel>
+
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Admin"))
+    {
+      <p>
+         <a asp-action="Create">Create New</a>
+      </p>
+    }
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TrainerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrainerArea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DogNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrainerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrainerArea)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DogNumber)
+                </td>
+                <td>
+                    <!--else if from https://www.w3schools.com/asp/razor_cs_logic.asp
+                     role code from https://social.technet.microsoft.com/wiki/contents/articles/51333.asp-net-core-2-0-getting-started-with-identity-and-role-management.aspx-->
+                   
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @if (User.IsInRole("User"))
+                        {
+
+                            <a asp-action="Details" asp-route-id="@item.TrainerId">Details</a>
+                        }
+                        else if (User.IsInRole("Manager"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.TrainerId">Edit |</a>
+                            <a asp-action="Details" asp-route-id="@item.TrainerId">Details</a>
+                        }
+                        else if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.TrainerId">Edit |</a>
+                            <a asp-action="Details" asp-route-id="@item.TrainerId">Details |</a>
+                            <a asp-action="Delete" asp-route-id="@item.TrainerId">Delete</a>
+                        }
+                    }
+                    else
+                    {
+                        <a asp-action="Details" asp-route-id="@item.TrainerId">Details</a>
+                    }
+                    <!--
+                    <a asp-action="Edit" asp-route-id="@item.TrainerId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.TrainerId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TrainerId">Delete</a>-->
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

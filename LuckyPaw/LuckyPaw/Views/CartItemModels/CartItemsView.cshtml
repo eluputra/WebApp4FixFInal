@@ -1,0 +1,92 @@
+﻿@model IEnumerable<LuckyPaw.Models.CartItemModel>
+
+@{
+    ViewData["Title"] = "CartItemsView";
+}
+
+<h1>Shopping Items Bought</h1>
+<h2>Puppies</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PricePuppyDesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PricePuppy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CartQty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <!--If code from https://www.w3schools.com/asp/razor_cs_logic.asp-->
+            @if (item.TrainingServicesPriceID == -1)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PricePuppyDesc)
+                    </td>
+                    <td>
+                        $@Html.DisplayFor(modelItem => item.PricePuppy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CartQty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<h2>Training Services</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TrainingName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriceTraining)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CartQty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <!--If code from https://www.w3schools.com/asp/razor_cs_logic.asp-->
+            @if (item.PricePuppyID == -1)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TrainingName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PriceTraining)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CartQty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

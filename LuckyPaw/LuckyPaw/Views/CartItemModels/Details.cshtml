@@ -1,0 +1,36 @@
+﻿@model LuckyPaw.Models.CartItemModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>CartItemModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PricePuppyID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PricePuppyID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TrainingServicesPriceID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TrainingServicesPriceID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CartQty)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CartQty)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CartId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

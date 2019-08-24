@@ -1,0 +1,43 @@
+﻿@model LuckyPaw.Models.TrainingDogModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TrainingDogModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DogName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DogName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TrainerId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TrainerId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GraduationDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GraduationDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TrainingType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TrainingType)
+        </dd>
+    </dl>
+</div>
+<div>
+    <!--
+    <a asp-action="Edit" asp-route-id="@Model.TrainingId">Edit</a> |-->
+    <a asp-action="Index">Back to List</a>
+</div>
